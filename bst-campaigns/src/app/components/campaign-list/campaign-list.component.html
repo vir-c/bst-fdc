@@ -1,0 +1,15 @@
+<div class="list-container">
+  <div class="d-flex flex-row justify-content-between header">
+      <div class="title">DATE</div>
+      <div class="title campaign">CAMPAIGN</div>
+      <div class="title">VIEW</div>
+      <div class="title actions">ACTIONS</div>
+  </div>
+  <div class="gtable-container">
+    <div class="gtable">
+      <ng-container *ngFor="let campaign of campaigns">
+        <app-campaign-item [campaign]="campaign"></app-campaign-item>
+      </ng-container>
+    </div>
+  </div>
+</div>

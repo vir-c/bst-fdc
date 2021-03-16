@@ -1,0 +1,39 @@
+<div class="d-flex justify-content-between gtable-row">
+
+  <div class="d-flex flex-column g-row-item">
+    <div class="date">{{campaign?.timestamp | date: "MMM YYYY, dd"}}</div>
+    <div class="time-ago">{{ getPassedTime(campaign?.timestamp) }}</div> <!-- CAN BE PIPED -->
+  </div>
+  
+
+  <div class="d-flex flex-row g-row-item campaign">
+    <img [src]="'assets/images/'+campaign?.img" width="40" height="40"/>
+    <div class="mx-2">
+      <div class="title">{{campaign?.title}}</div>
+      <div class="country">{{campaign?.countryCode}}</div>
+    </div>
+  </div>
+
+
+  <div class="d-flex g-row-item">
+    <img src="assets/images/price.png" width="24" height="24"/>
+    <div class="mx-1">View Pricing</div>
+  </div>
+
+
+  <div class="d-flex flex-row g-row-item actions">
+    <div class="d-flex mx-4">
+      <img src="assets/images/file.png" width="24" height="24"/>
+      <div class="mx-1">CSV</div>
+    </div>
+    <div class="d-flex">
+      <img src="assets/images/report.png" width="24" height="24"/>
+      <div class="mx-1">Report</div>
+    </div>
+    <div class="d-flex mx-4">
+      <img src="assets/images/calendar.png" width="24" height="24"/>
+      <div class="mx-1">Schedule Again</div>
+    </div>
+  </div>
+
+</div>

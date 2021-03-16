@@ -1,0 +1,45 @@
+.gtable-row{
+  padding: 20px 0px;
+
+  .g-row-item{
+    flex: 1;
+  }
+
+  .date{
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0px;
+    text-align: left;
+    color: #2B416C;
+  }
+  .time-ago{
+    color: #7788A3;
+    font-size: 14px;
+    font-style: italic;
+    line-height: 24px;
+  }
+
+  .campaign{
+    flex: 2;
+    .title{
+      color: #556789;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+      text-align: left;
+    }
+    .country{
+      font-size: 14px;
+      font-style: italic;
+      font-weight: 400;
+      line-height: 24px;
+      text-align: left;
+      color: #9CA2B7;
+    }
+  }
+
+  .actions{
+    flex: 3
+  }
+
+}
