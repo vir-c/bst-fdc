@@ -1,0 +1,15 @@
+{
+  "name": "bst-fdc",
+  "private": true,
+  "author": "vir-c",
+  "scripts": {
+    "build": "npm run bootstrap && lerna run build --stream",
+    "bootstrap": "lerna bootstrap --no-ci --loglevel warn"
+  },
+  "dependencies": {
+    "faunadb": "^4.1.1"
+  },
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  }
+}
