@@ -23,8 +23,11 @@ exports.handler = async function (event, context) {
       statusCode: 200,
       body: JSON.stringify({
         status: "OK",
-        data: campaigns
-      }),
+        data: campaigns,
+        headers: {
+          "Access-Control-Allow-Origin": "*"
+        }
+      })
     }
 };
 
