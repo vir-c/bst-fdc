@@ -4,25 +4,23 @@
   <div>
    <img width="145" alt="BST Logo" src="/assets/images/bst-logo.png" />
   </div>
-    <div class="dropdown offset-">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="lang-selector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        En
-      </button>
-      <div class="dropdown-menu" aria-labelledby="lang-selector">
-        <button class="dropdown-item" type="button">En (English)</button>
-        <button class="dropdown-item" type="button">ES (Spanish)</button>
-      </div>
+  <div ngbDropdown placement="bottom" class="d-inline-block">
+    <button class="btn btn-outline-primary" id="dropdownBasic2" ngbDropdownToggle>{{translate.currentLang | titlecase }}</button>
+    <div ngbDropdownMenu aria-labelledby="dropdownBasic2">
+      <button ngbDropdownItem (click)="translate.currentLang!='en' && translate.use('en')">EN</button>
+      <button ngbDropdownItem (click)="translate.currentLang!='de' && translate.use('de')">DE</button>
+    </div>
   </div>
   </div>
 </div>
 
 <div class="d-flex flex-column col-lg-10 offset-lg-1 justify-content-between content" role="main">
 
-  <div class="header">Manage Campaigns</div>
+  <div class="header">{{ 'PAGE_HEADER.TITLE'| translate }}</div>
   <div class="d-flex flex-column flex-md-row align-items-start nav-links">
-    <div class="mt-2 mt-md-0 link" [ngClass]="{'active': campaignType==CAMPAIGNTYPES.UPCOMING}" (click)="changeCampaign(CAMPAIGNTYPES.UPCOMING)">Upcoming Campaigns</div>
-    <div class="mt-2 mt-md-0 link" [ngClass]="{'active': campaignType==CAMPAIGNTYPES.LIVE}" (click)="changeCampaign(CAMPAIGNTYPES.LIVE)">Live Campaigns</div>
-    <div class="mt-2 mt-md-0 link" [ngClass]="{'active': campaignType==CAMPAIGNTYPES.PAST}" (click)="changeCampaign(CAMPAIGNTYPES.PAST)">Past Campaigns</div>
+    <div class="mt-2 mt-md-0 link" [ngClass]="{'active': campaignType==CAMPAIGNTYPES.UPCOMING}" (click)="changeCampaign(CAMPAIGNTYPES.UPCOMING)">{{"CAMPAIGNS.UPCOMING" | translate }}</div>
+    <div class="mt-2 mt-md-0 link" [ngClass]="{'active': campaignType==CAMPAIGNTYPES.LIVE}" (click)="changeCampaign(CAMPAIGNTYPES.LIVE)">{{"CAMPAIGNS.LIVE" | translate }}</div>
+    <div class="mt-2 mt-md-0 link" [ngClass]="{'active': campaignType==CAMPAIGNTYPES.PAST}" (click)="changeCampaign(CAMPAIGNTYPES.PAST)">{{"CAMPAIGNS.PAST" | translate }}</div>
   </div>
   <router-outlet></router-outlet>
 

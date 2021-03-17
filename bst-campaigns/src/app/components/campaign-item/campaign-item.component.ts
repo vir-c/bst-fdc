@@ -4,7 +4,10 @@ import * as dayjs from 'dayjs';
 import * as relativeTime from 'dayjs/plugin/relativeTime';
 import { NgbDateStruct, NgbInputDatepicker, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CampaignService } from 'src/app/services/campaign.service';
+import * as locale  from 'dayjs/locale/de' 
+import { TranslateService } from '@ngx-translate/core';
 dayjs.extend(relativeTime);
+dayjs.locale(locale)
 
 @Component({
   selector: 'app-campaign-item',
@@ -18,7 +21,7 @@ export class CampaignItemComponent implements OnInit {
   model: NgbDateStruct | undefined;
   @ViewChild('ngbDatepicker') ngbDatepicker: NgbInputDatepicker | undefined
   
-  constructor(private campaignService: CampaignService, private modalService: NgbModal) { }
+  constructor(private campaignService: CampaignService, private modalService: NgbModal, private translateService: TranslateService) { }
 
   ngOnInit(): void {
     
@@ -26,7 +29,8 @@ export class CampaignItemComponent implements OnInit {
 
   public getPassedTime(time: number | undefined){
     if(!time) return ""
-    else return dayjs(time).fromNow()
+    dayjs.locale(this.translateService.currentLang)
+    return dayjs(time).fromNow()
   }
 
   onNewDate(event: any){
@@ -35,6 +39,10 @@ export class CampaignItemComponent implements OnInit {
 
   openModal(content: any){
     this.modalService.open(content, {size: 'sm'});
+  }
+
+  getWeekdayShortName(){
+    return 'Mon'
   }
 
 }

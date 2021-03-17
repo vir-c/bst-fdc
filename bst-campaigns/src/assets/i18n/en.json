@@ -1,0 +1,18 @@
+{
+  "PAGE_HEADER": {
+    "TITLE": "Manage Campaigns"
+  },
+  "CAMPAIGNS":{
+    "UPCOMING": "Upcoming Campaigns",
+    "PAST": "Past Campaigns",
+    "LIVE": "Live Campaigns"
+  }, 
+  "TABLE": {
+    "HEADERS": {
+      "DATE": "Date",
+      "CAMPAIGN": "Campaign",
+      "VIEW": "View",
+      "ACTIONS": "Actions"
+    }
+  }
+}

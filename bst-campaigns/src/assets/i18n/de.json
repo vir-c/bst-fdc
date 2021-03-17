@@ -1,0 +1,18 @@
+{
+  "PAGE_HEADER": {
+    "TITLE": "Verwalten Kampagnen"
+  },
+  "CAMPAIGNS":{
+    "UPCOMING": "Bevorstehende Kampagnen",
+    "PAST": "Vergangenheit Kampagnen",
+    "LIVE": "Wohnen Kampagnen"
+  }, 
+  "TABLE": {
+    "HEADERS": {
+      "DATE": "Date",
+      "CAMPAIGN": "Campaign",
+      "VIEW": "Aussicht",
+      "ACTIONS": "Actions"
+    }
+  }
+}
