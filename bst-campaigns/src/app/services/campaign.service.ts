@@ -10,7 +10,7 @@ import { config } from '../app.config';
 })
 export class CampaignService {
 
-  private campaigns: Array<Campaign> = campaignsList
+  private campaigns: Array<Campaign> = []
   private campaignsUpdated: Subject<string> = new Subject<string>()
 
   constructor(private http: HttpClient ) {
