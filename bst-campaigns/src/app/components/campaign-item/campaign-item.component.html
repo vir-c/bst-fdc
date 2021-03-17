@@ -17,7 +17,7 @@
 
   <div class="d-flex g-row-item">
     <img src="assets/images/price.png" width="24" height="24"/>
-    <div class="mx-1">View Pricing</div>
+    <div class="mx-1 price">View Pricing</div>
   </div>
 
 
@@ -30,10 +30,13 @@
       <img src="assets/images/report.png" width="24" height="24"/>
       <div class="mx-1">Report</div>
     </div>
-    <div class="d-flex mx-4">
-      <img src="assets/images/calendar.png" width="24" height="24"/>
-      <div class="mx-1">Schedule Again</div>
-    </div>
-  </div>
+    <a class="d-flex mx-4 position-relative" href="javascript:void(0)" role="button" (keyup.enter)="d.toggle()">
+      <label class="d-flex" >
+        <input tabindex="-1" class="datepicker" (click)="d.toggle()" (dateSelect)="onNewDate($event)" name="dp" [(ngModel)]="model" [autoClose]="true" ngbDatepicker #d="ngbDatepicker">
+        <img src="assets/images/calendar.png" width="24" height="24"/>
+        <div class="mx-1">Schedule Again</div>
+      </label>
+    </a>
+        </div>
 
 </div>

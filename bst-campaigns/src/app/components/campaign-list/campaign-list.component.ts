@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { SubjectSubscriber } from 'rxjs/internal/Subject';
 import { Campaign, CampaignTypes } from 'src/app/app.types';
+import { CampaignService } from 'src/app/services/campaign.service';
 
 /**
  * component to manage individual an individual campaign
@@ -13,91 +16,40 @@ import { Campaign, CampaignTypes } from 'src/app/app.types';
 export class CampaignListComponent implements OnInit {
 
   campaigns: Array<Campaign> = []
-  constructor(private route: ActivatedRoute){}
+  campaignType!: CampaignTypes
+  campaignsSubscription!: Subscription
+
+  constructor(private route: ActivatedRoute, private campaignService:CampaignService){}
 
   ngOnInit(): void {
     this.route.params.subscribe((params)=>{
-      console.log(params)
-      this.filterCampaigns(params.type)
-      
+      this.campaignType = params.type
+      this.filterCampaigns()
     })
+
+    this.campaignsSubscription = this.campaignService.campaignsChanges().subscribe(()=>this.filterCampaigns())
+
   }
 
-  filterCampaigns(type: CampaignTypes){
+  filterCampaigns(){
     const lastMidNightTimeStamp = (new Date()).setUTCHours(0, 0, 0, 0)
     const nextMidNightTimeStamp = (new Date()).setUTCHours(24, 0, 0, 0)
 
-    switch(type){
+    switch(this.campaignType){
       case CampaignTypes.UPCOMING:
-        this.campaigns = campaignsList.filter((el)=>el.timestamp>nextMidNightTimeStamp)
+        this.campaigns = this.campaignService.getCampaigns().filter((el)=>el.timestamp>nextMidNightTimeStamp)
         break;
       case CampaignTypes.PAST:
-          this.campaigns = campaignsList.filter((el)=>el.timestamp<lastMidNightTimeStamp)
+          this.campaigns = this.campaignService.getCampaigns().filter((el)=>el.timestamp<lastMidNightTimeStamp)
           break;
       case CampaignTypes.LIVE:
-        this.campaigns = campaignsList.filter((el)=> ( el.timestamp<nextMidNightTimeStamp && el.timestamp>lastMidNightTimeStamp ))
+        this.campaigns = this.campaignService.getCampaigns().filter((el)=> ( el.timestamp<nextMidNightTimeStamp && el.timestamp>lastMidNightTimeStamp ))
         break;
     }
   }
 
-}
 
-
-const campaignsList: Array<Campaign> = [
-  {
-    id: "4832b2fe",
-    timestamp: 1616544000000,
-    title: "Auto Chess",
-    img: "chess.png",
-    countryCode: "US" 
-  },
-  {
-    id: "4cbedd02",
-    timestamp: 1616544000000,
-    title: "PUBG MOBILE",
-    img: "pubg.png",
-    countryCode: "US" 
-  },
-  {
-    id: "6b07ee3e",
-    timestamp: 1616544000000,
-    title: "Flow Free",
-    img: "flow-free.png",
-    countryCode: "US" 
-  },
-  {
-    id: "72aedbfc",
-    timestamp: 1572220800000,
-    title: "Garena Free Fire...",
-    img: "garenaff.png",
-    countryCode: "US" 
-  },
-  {
-    id: "78d46eac",
-    timestamp: 1572220800000,
-    title: "MORTAL KOMBAT",
-    img: "mortal-kombat.png",
-    countryCode: "US" 
-  },
-  {
-    id: "807528cc",
-    timestamp: 1572220800000,
-    title: "Summoners War",
-    img: "summoners-war.png",
-    countryCode: "US" 
-  },  
-  {
-    id: "84027544",
-    timestamp: 1572220800000,
-    title: "Need for Speed™ No Limits",
-    img: "nfs.png",
-    countryCode: "US" 
-  },  
-  {
-    id: "8852b172",
-    timestamp: 1572220800000,
-    title: "Shadow Fight 3",
-    img: "shadow-fight.png",
-    countryCode: "US" 
+  ngOnDestroy(){
+    if(this.campaignsSubscription) this.campaignsSubscription.unsubscribe()
   }
-]
+}
