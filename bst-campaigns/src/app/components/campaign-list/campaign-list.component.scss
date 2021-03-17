@@ -5,6 +5,12 @@
   .header{
     padding: 12px 20px;
     background: #F1F1F4;
+    color: #556789;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    text-align: left;
     .title{
       font-size: 16px;
       font-weight: 500;
@@ -14,7 +20,7 @@
         flex: 2
       }
       &.actions{
-        flex: 3
+        flex: 2
       }
     }
   }

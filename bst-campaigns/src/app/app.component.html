@@ -19,10 +19,10 @@
 <div class="d-flex flex-column col-lg-10 offset-lg-1 justify-content-between content" role="main">
 
   <div class="header">Manage Campaigns</div>
-  <div class="d-flex nav-links">
-    <div class="link" [ngClass]="{'active': campaignType==CAMPAIGNTYPES.UPCOMING}" (click)="changeCampaign(CAMPAIGNTYPES.UPCOMING)">Upcoming Campaigns</div>
-    <div class="link" [ngClass]="{'active': campaignType==CAMPAIGNTYPES.LIVE}" (click)="changeCampaign(CAMPAIGNTYPES.LIVE)">Live Campaigns</div>
-    <div class="link" [ngClass]="{'active': campaignType==CAMPAIGNTYPES.PAST}" (click)="changeCampaign(CAMPAIGNTYPES.PAST)">Past Campaigns</div>
+  <div class="d-flex flex-column flex-md-row align-items-start nav-links">
+    <div class="mt-2 mt-md-0 link" [ngClass]="{'active': campaignType==CAMPAIGNTYPES.UPCOMING}" (click)="changeCampaign(CAMPAIGNTYPES.UPCOMING)">Upcoming Campaigns</div>
+    <div class="mt-2 mt-md-0 link" [ngClass]="{'active': campaignType==CAMPAIGNTYPES.LIVE}" (click)="changeCampaign(CAMPAIGNTYPES.LIVE)">Live Campaigns</div>
+    <div class="mt-2 mt-md-0 link" [ngClass]="{'active': campaignType==CAMPAIGNTYPES.PAST}" (click)="changeCampaign(CAMPAIGNTYPES.PAST)">Past Campaigns</div>
   </div>
   <router-outlet></router-outlet>
 

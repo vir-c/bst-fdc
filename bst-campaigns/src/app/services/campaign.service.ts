@@ -18,6 +18,7 @@ export class CampaignService {
     if(!campaigns){
       this.fetchCampaigns().subscribe((data)=>{
         this.campaigns = data
+        this.campaignsUpdated.next("init")
       })
     }else{
       this.campaigns = JSON.parse(campaigns)
@@ -43,7 +44,7 @@ export class CampaignService {
   }
 
   fetchCampaigns(): Observable<Array<Campaign>>{
-    return this.http.get("https://bst-fdc-campaigns.netlify.app/.netlify/functions/get-campaigns").pipe(
+    return this.http.get(".netlify/functions/get-campaigns").pipe(
       map((res:any)=>res.data))
   }
 
