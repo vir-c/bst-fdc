@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { CampaignTypes } from './app.types';
 
@@ -8,15 +8,19 @@ import { CampaignTypes } from './app.types';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   
   campaignType: CampaignTypes = CampaignTypes.UPCOMING
   CAMPAIGNTYPES = CampaignTypes
 
-  constructor(private router: Router,public translate: TranslateService){
+  constructor(private router: Router, public translate: TranslateService, private route:ActivatedRoute ){
     translate.addLangs(['en', 'de']);
     translate.setDefaultLang('en');
     translate.use('en');
+  }
+
+  ngOnInit(){
+    console.log(this.route.snapshot)
   }
 
   changeCampaign(type: CampaignTypes){
