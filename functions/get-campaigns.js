@@ -13,7 +13,7 @@ exports.handler = function (event, context, callback) {
   client
     .query(
       q.Map(
-        q.Documents(q.Collection("campaigns")),
+        q.Paginate(q.Documents(q.Collection("campaigns"))),
         q.Lambda((post) => q.Get(post))
       )
     )
